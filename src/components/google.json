@@ -1,0 +1,11 @@
+{
+  "MainUrl": "https://www.google.com.vn/",
+  "SearchList": "/html/body/div[7]/div[2]/div[10]/div[1]/div[2]/div/div[2]/div[2]/div/div",
+  "FirstResult": "/html/body/div[7]/div[2]/div[10]/div[1]/div[2]/div/div[2]/div[2]/div/div/div[1]/div[1]",
+  "SnippetInfo1": "div/div[1]/div/div[1]/div/span/span",
+  "SnippetInfo2": "div[1]/div[1]/div/div[2]/div/div[1]/div/div/div[1]",
+  "SnippetInfo3": "div[1]/div/div[1]/div/div[1]/div/div[1]/div/span/span",
+  "Object": "/html/body/div[7]/div[2]/div[10]/div[1]/div[3]/div/div/div[1]",
+  "ObjectInfo1": "div[2]/div/div/div[2]/div/div/div/div[1]/div/div/div/div/span[1]",
+  "ObjectInfo2": "div[2]/div/div/div/div/div/div/div[1]/div/div/div/div/span[1]"
+}
