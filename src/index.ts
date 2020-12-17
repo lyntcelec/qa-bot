@@ -144,23 +144,27 @@ async function main() {
           let FirstResult = await GoogleSearchElement.findElement(
             By.xpath(GoogleSearch.FirstResult),
           );
-          const checkBorder = (await FirstResult.getCssValue("border")).split(" ")[1];
-          let SnippetInfo;
-          if (checkBorder !== "none") {
-            let SnippetList = await FirstResult.findElements(By.xpath("div"));
-            if (SnippetList.length === 1) {
-              SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo1));
+          try {
+            const checkBorder = (await FirstResult.getCssValue("border")).split(" ")[1];
+            let SnippetInfo;
+            if (checkBorder !== "none") {
+              let SnippetList = await FirstResult.findElements(By.xpath("div"));
+              if (SnippetList.length === 1) {
+                SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo1));
+              } else {
+                SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo2));
+              }
+              SnippetInfoText = await SnippetInfo.getText();
             } else {
-              SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo2));
+              let SearchList = await GoogleSearchElement.findElements(
+                By.xpath(GoogleSearch.SearchList + "/div"),
+              );
+              if (SearchList.length == 2) {
+                SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo3));
+              }
             }
-            SnippetInfoText = await SnippetInfo.getText();
-          } else {
-            let SearchList = await GoogleSearchElement.findElements(
-              By.xpath(GoogleSearch.SearchList + "/div"),
-            );
-            if (SearchList.length == 2) {
-              SnippetInfo = await FirstResult.findElement(By.xpath(GoogleSearch.SnippetInfo3));
-            }
+          } catch (e) {
+            console.log("Xin lỗi, mình chưa hiểu ý bạn");
           }
 
           if (SnippetInfoText !== "") {
@@ -169,6 +173,10 @@ async function main() {
 
           if (ObjectText !== "") {
             console.log(ObjectText);
+          }
+
+          if (SnippetInfoText === "" && ObjectText === "") {
+            console.log("Xin lỗi, mình chưa hiểu ý bạn");
           }
 
           break;
